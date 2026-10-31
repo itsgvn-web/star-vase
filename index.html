@@ -4,248 +4,261 @@
 <title>17 and one for luck</title>
 
 <style>
-
-body{
-margin:0;
-height:100vh;
-overflow:hidden;
-background:
-radial-gradient(circle at top,#223d6d 0%,#081120 45%),
-linear-gradient(to bottom,#081120,#152643);
-font-family:Georgia,serif;
-position:relative;
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: 
+        radial-gradient(circle at top, #223d6d 0%, #081120 45%),
+        linear-gradient(to bottom, #081120, #152643);
+    font-family: Georgia, serif;
+    position: relative;
 }
 
-.title{
-position:absolute;
-top:50px;
-width:100%;
-text-align:center;
-font-size:42px;
-color:#f7f2eb;
-letter-spacing:2px;
-z-index:5;
+.title {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 42px;
+    color: #f7f2eb;
+    letter-spacing: 2px;
+    z-index: 5;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-.subtitle{
-position:absolute;
-top:110px;
-width:100%;
-text-align:center;
-color:#cfd6e2;
-z-index:5;
+.subtitle {
+    position: absolute;
+    top: 95px;
+    width: 100%;
+    text-align: center;
+    color: #cfd6e2;
+    font-size: 16px;
+    z-index: 5;
 }
 
-.moon{
-position:absolute;
-top:70px;
-right:120px;
-width:110px;
-height:110px;
-border-radius:50%;
-background:#f6efd8;
-box-shadow:0 0 60px rgba(255,255,220,.6);
+.moon {
+    position: absolute;
+    top: 60px;
+    right: 120px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #f6efd8;
+    box-shadow: 0 0 60px rgba(255,255,220,.6);
 }
 
-.cloud1{
-position:absolute;
-bottom:70px;
-left:-100px;
-width:500px;
-height:150px;
-background:white;
-opacity:.06;
-filter:blur(50px);
-border-radius:50%;
+.cloud1 {
+    position: absolute;
+    bottom: 70px;
+    left: -100px;
+    width: 500px;
+    height: 150px;
+    background: white;
+    opacity: .06;
+    filter: blur(50px);
+    border-radius: 50%;
 }
 
-.cloud2{
-position:absolute;
-bottom:120px;
-right:-100px;
-width:400px;
-height:120px;
-background:white;
-opacity:.05;
-filter:blur(45px);
-border-radius:50%;
-}
-.purpleGlow{
-position:absolute;
-top:150px;
-left:20%;
-width:500px;
-height:300px;
-background:#7b5cff;
-opacity:.08;
-filter:blur(100px);
-border-radius:50%;
+.cloud2 {
+    position: absolute;
+    bottom: 120px;
+    right: -100px;
+    width: 400px;
+    height: 120px;
+    background: white;
+    opacity: .05;
+    filter: blur(45px);
+    border-radius: 50%;
 }
 
-.pinkGlow{
-position:absolute;
-bottom:50px;
-right:15%;
-width:400px;
-height:250px;
-background:#ffb3d9;
-opacity:.05;
-filter:blur(100px);
-border-radius:50%;
+.sparkle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: .6;
+    animation: twinkle 3s infinite alternate;
 }
 
-.sparkle{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-opacity:.6;
-animation:twinkle 3s infinite alternate;
-}
-.memoryStar{
-position:absolute;
-width:20px;
-height:20px;
-background:#fff7d6;
-clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-box-shadow:0 0 20px #fff7d6;
-cursor:pointer;
+.memoryStar {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #fff7d6;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    box-shadow: 0 0 15px #fff7d6;
+    cursor: pointer;
+    transition: transform .3s, opacity .3s;
+    z-index: 10;
 }
 
-#popup{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.45);
-justify-content:center;
-align-items:center;
-z-index:100;
+.memoryStar:hover {
+    transform: scale(1.4);
 }
 
-#note{
-background:#ffd6ec;
-color:#3a3552;
-padding:25px;
-width:300px;
-min-height:180px;
-border-radius:14px;
-box-shadow:0 0 30px rgba(255,255,255,.15);
-position:relative;
-font-size:18px;
-line-height:1.5;
+.visited {
+    opacity: .35;
+    filter: grayscale(40%);
 }
 
-#closeBtn{
-position:absolute;
-top:10px;
-right:14px;
-border:none;
-background:none;
-font-size:24px;
-cursor:pointer;
-color:#555;
+#popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .45);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
-.memoryStar:hover{
-transform:scale(1.3);
-transition:.3s;
+#note {
+    background: #ffd6ec;
+    color: #3a3552;
+    padding: 30px 25px 25px 25px;
+    width: 300px;
+    min-height: 180px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    position: relative;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    transform: rotate(-2deg);
 }
 
-.visited{
-opacity:.5;
+#note.color-1 { background: #ffb7b2; } 
+#note.color-2 { background: #ffdac1; } 
+#note.color-3 { background: #e2f0cb; } 
+#note.color-4 { background: #b5ead7; } 
+#note.color-5 { background: #c7ceea; } 
+
+#closeBtn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #555;
 }
 
-#luckyStar{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:50px;
-display:none;
-cursor:pointer;
-animation:twinkle 2s infinite alternate;
+#luckyStar {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    display: none;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px #ffdfba);
+    animation: twinkle 1.5s infinite alternate;
+    z-index: 20;
 }
 
-@keyframes twinkle{
-from{opacity:.2;}
-to{opacity:1;}
+.music-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #f7f2eb;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    z-index: 30;
+    transition: background 0.3s;
 }
 
+.music-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes twinkle {
+    from { opacity: .2; }
+    to { opacity: 1; }
+}
 </style>
 </head>
 
 <body>
 
-<div class="moon"></div>
+<button class="music-btn" id="musicBtn">🎵 Play Music</button>
+<audio id="bgMusic" loop>
+    <source src="https://actions.google.com/sounds/v1/weather/rain_heavy.ogg" type="audio/ogg">
+</audio>
 
+<div class="moon"></div>
 <div class="cloud1"></div>
 <div class="cloud2"></div>
 
 <div class="title">17 and one for luck</div>
+<div class="subtitle">click a star when you're ready</div>
 
-<div class="subtitle">
-click a star when you're ready
-</div>
-
-<div class="sparkle" style="top:15%;left:10%;"></div>
-<div class="sparkle" style="top:20%;left:20%;"></div>
-<div class="sparkle" style="top:30%;left:35%;"></div>
-<div class="sparkle" style="top:12%;left:50%;"></div>
-<div class="sparkle" style="top:25%;left:70%;"></div>
-<div class="sparkle" style="top:18%;left:85%;"></div>
-<div class="sparkle" style="top:40%;left:15%;"></div>
-<div class="sparkle" style="top:50%;left:28%;"></div>
-<div class="sparkle" style="top:45%;left:65%;"></div>
-<div class="sparkle" style="top:35%;left:82%;"></div>
-<div class="sparkle" style="top:55%;left:90%;"></div>
-<div class="sparkle" style="top:65%;left:22%;"></div>
+<!-- Background Sparkles -->
+<div class="sparkle" style="top:15%;left:8%;"></div>
+<div class="sparkle" style="top:22%;left:25%;"></div>
+<div class="sparkle" style="top:12%;left:42%;"></div>
+<div class="sparkle" style="top:25%;left:60%;"></div>
+<div class="sparkle" style="top:18%;left:88%;"></div>
+<div class="sparkle" style="top:42%;left:5%;"></div>
+<div class="sparkle" style="top:55%;left:18%;"></div>
+<div class="sparkle" style="top:45%;left:55%;"></div>
+<div class="sparkle" style="top:38%;left:92%;"></div>
+<div class="sparkle" style="top:62%;left:85%;"></div>
+<div class="sparkle" style="top:82%;left:25%;"></div>
+<div class="sparkle" style="top:85%;left:65%;"></div>
 
 
 <!-- MEMORY STARS -->
+<div class="memoryStar" style="top:23%;left:15%;" data-memory="Walking home from school or after badminton, joking and laughing the whole way—even though that faded a bit later , those are easily some of my most beautiful memories."></div>
+<div class="memoryStar" style="top:32%;left:28%;" data-memory="Navratri, Diwali, Holi, Uttarayan, birthdays—every single time we celebrated together, it was just pure laughter. Even though we only shared most of those moments once or twice, looking back, they always feel as fresh and special as ever."></div>
+<div class="memoryStar" style="top:18%;left:38%;" data-memory="All those countless moments in class we never thought would become so unforgettable—sharing tiffins or a stolen bottle. These memories may not be grand, but they are the ones I look back on and think, 'My childhood was fun, especially the part where a friend gave a Hindi oral examination.'"></div>
+<div class="memoryStar" style="top:26%;left:52%;" data-memory="All those lassi and chaas breaks, your nagging when I had a cold, and all those days you clearly bullied me. I'll be taking revenge for that—it will never be forgotten!"></div>
+<div class="memoryStar" style="top:20%;left:68%;" data-memory="With you, every moment was awkward and filled with second thoughts, but every single moment was happy. Every moment was and is a precious memory."></div>
+<div class="memoryStar" style="top:35%;left:82%;" data-memory="You aren't completely non-admirable. Some of your best qualities are known to people as mine , hehehe, I stole them."></div>
+<div class="memoryStar" style="top:48%;left:12%;" data-memory="That one specific walk from school on a rainy day has to be one of the reasons I tolerate you"></div>
+<div class="memoryStar" style="top:58%;left:25%;" data-memory="Topics never seem to end with you. No matter what, every call goes on for hours—that definitely belongs on my 'what I like' list."></div>
+<div class="memoryStar" style="top:45%;left:38%;" data-memory="What makes you, you, is your curiosity about everything. How you find things you love, give them time, and have a personality that isn't restricted or confined in a small box—you constantly learn and grow."></div>
+<div class="memoryStar" style="top:52%;left:62%;" data-memory="You are so much more than what the world sees, and I am glad I could witness versions of you I never thought existed."></div>
+<div class="memoryStar" style="top:62%;left:75%;" data-memory="You are my absolute favorite part of 'everything happens for a reason.'"></div>
+<div class="memoryStar" style="top:75%;left:18%;" data-memory="I hope at no point in your life you ever think that not smiling, not living, or not enjoying things is cool."></div>
+<div class="memoryStar" style="top:80%;left:35%;" data-memory="Do you know how rare are people  who make others feel truly seen? You've been that one for so many; so many have had a better day just because of you."></div>
+<div class="memoryStar" style="top:70%;left:50%;" data-memory="And I pray you are never blind enough to miss how lovable you are—even when you're annoying!"></div>
+<div class="memoryStar" style="top:78%;left:68%;" data-memory="I truly hope we make more memories... many, many more."></div>
+<div class="memoryStar" style="top:40%;left:22%;" data-memory="You are the reason I stopped wanting male friendships."></div>
+<div class="memoryStar" style="top:28%;left:90%;" data-memory="I hope you live long enough to see the end of the world."></div>
 
-<div class="memoryStar" style="top:22%;left:18%;" data-memory="Memory 1"></div>
-<div class="memoryStar" style="top:30%;left:35%;" data-memory="Memory 2"></div>
-<div class="memoryStar" style="top:20%;left:50%;" data-memory="Memory 3"></div>
-<div class="memoryStar" style="top:28%;left:65%;" data-memory="Memory 4"></div>
-<div class="memoryStar" style="top:40%;left:80%;" data-memory="Memory 5"></div>
-<div class="memoryStar" style="top:50%;left:20%;" data-memory="Memory 6"></div>
-<div class="memoryStar" style="top:60%;left:35%;" data-memory="Memory 7"></div>
-<div class="memoryStar" style="top:48%;left:50%;" data-memory="Memory 8"></div>
-<div class="memoryStar" style="top:58%;left:65%;" data-memory="Memory 9"></div>
-<div class="memoryStar" style="top:68%;left:78%;" data-memory="Memory 10"></div>
-<div class="memoryStar" style="top:72%;left:15%;" data-memory="Memory 11"></div>
-<div class="memoryStar" style="top:75%;left:28%;" data-memory="Memory 12"></div>
-<div class="memoryStar" style="top:70%;left:45%;" data-memory="Memory 13"></div>
-<div class="memoryStar" style="top:78%;left:58%;" data-memory="Memory 14"></div>
-<div class="memoryStar" style="top:74%;left:72%;" data-memory="Memory 15"></div>
-<div class="memoryStar" style="top:35%;left:10%;" data-memory="Memory 16"></div>
-<div class="memoryStar" style="top:15%;left:75%;" data-memory="Memory 17"></div>
-<div id="luckyStar">⭐</div>
-<div id="popup"> 
-  <div id="note"> 
+<div id="luckyStar" title="Click your lucky star!">⭐</div>
+
+<div id="popup
+  <div id="note" class="color-1"> 
     <button id="closeBtn">×</button>
     <p id="memoryText"></p>
   </div>
 </div>
 
 <script>
-
 const stars = document.querySelectorAll(".memoryStar");
 const popup = document.getElementById("popup");
+const note = document.getElementById("note");
 const memoryText = document.getElementById("memoryText");
 const closeBtn = document.getElementById("closeBtn");
 const luckyStar = document.getElementById("luckyStar");
+const musicBtn = document.getElementById("musicBtn");
+const bgMusic = document.getElementById("bgMusic");
 
 let opened = 0;
 
-stars.forEach(star => {
-
+stars.forEach((star, index) => {
   star.addEventListener("click", () => {
-
     if(!star.classList.contains("visited")){
       star.classList.add("visited");
       opened++;
@@ -253,14 +266,16 @@ stars.forEach(star => {
 
     memoryText.textContent = star.dataset.memory;
 
+    const randomRot = (Math.random() * 6) - 3;
+    note.style.transform = `rotate(${randomRot}deg)`;
+    note.className = `color-${(index % 5) + 1}`;
+
     popup.style.display = "flex";
 
     if(opened === 17){
       luckyStar.style.display = "block";
     }
-
   });
-
 });
 
 closeBtn.addEventListener("click", () => {
@@ -268,14 +283,24 @@ closeBtn.addEventListener("click", () => {
 });
 
 luckyStar.addEventListener("click", () => {
-
-  memoryText.innerHTML =
-  "⭐ You've unlocked the lucky star!";
-
+  memoryText.innerHTML = "✨ **The 18th Star Unlocked!**<br><br>You found all 17 memories... and here is one  for luck! i hope you are not sad on days you dont have to be,i hope on days you feel like you have no one you have someone to go to ,i hope you become someone you will be proud of, thank you for being a constant till now and i hope it stays like this till long ,Happy Birthday Parv . 🤍";
+  note.style.transform = "rotate(1deg)";
+  note.className = "color-2";
   popup.style.display = "flex";
-
 });
 
+let isPlaying = false;
+musicBtn.addEventListener("click", () => {
+  if (!isPlaying) {
+    bgMusic.play();
+    musicBtn.textContent = "🔇 Pause Music";
+    isPlaying = true;
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = "🎵 Play Music";
+    isPlaying = false;
+  }
+});
 </script>
 
 </body>
