@@ -9,10 +9,11 @@ body {
     height: 100vh;
     overflow: hidden;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(120, 140, 200, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 70% 80%, rgba(90, 70, 150, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at top, #1a2f54 0%, #060c18 60%),
-        linear-gradient(to bottom, #060c18, #0b172a);
+        radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at top, #1e1b4b 0%, #030712 70%),
+        linear-gradient(to bottom, #030712, #0f172a);
     font-family: Georgia, serif;
     position: relative;
 }
@@ -41,15 +42,33 @@ body {
 
 .moon {
     position: absolute;
-    top: 60px;
-    right: 120px;
-    width: 110px;
-    height: 110px;
+    top: 50px;
+    right: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: #f6efd8;
-    box-shadow: 0 0 60px rgba(255,255,220,.6);
+    background: radial-gradient(circle at 35% 35%, #fffdfa 0%, #f6efd8 70%, #e2d3a8 100%);
+    box-shadow: 
+        0 0 25px rgba(255, 253, 240, 0.8),
+        0 0 60px rgba(186, 170, 240, 0.4),
+        0 0 100px rgba(120, 140, 255, 0.2);
+    animation: moonFloat 6s ease-in-out infinite alternate;
 }
 
+@keyframes moonFloat {
+    from {
+        transform: translateY(0px) scale(1);
+        box-shadow: 
+            0 0 25px rgba(255, 253, 240, 0.8),
+            0 0 60px rgba(186, 170, 240, 0.4);
+    }
+    to {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 
+            0 0 35px rgba(255, 253, 240, 0.9),
+            0 0 80px rgba(186, 170, 240, 0.6);
+    }
+}
 .cloud1 {
     position: absolute;
     bottom: 70px;
@@ -72,6 +91,53 @@ body {
     opacity: .05;
     filter: blur(45px);
     border-radius: 50%;
+}
+.nebula {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1;
+    animation: nebulaDrift 10s ease-in-out infinite alternate;
+}
+
+/* Purple Nebula */
+.nebula-purple {
+    top: 20%;
+    left: 15%;
+    width: 400px;
+    height: 300px;
+    background: radial-gradient(circle, #8b5cf6, transparent 70%);
+}
+
+/* Cyan/Blue Nebula */
+.nebula-blue {
+    bottom: 15%;
+    right: 10%;
+    width: 450px;
+    height: 350px;
+    background: radial-gradient(circle, #06b6d4, transparent 70%);
+}
+
+/* Pink/Magenta Nebula */
+.nebula-pink {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #ec4899, transparent 70%);
+    opacity: 0.25;
+}
+
+@keyframes nebulaDrift {
+    from {
+        transform: scale(1) translate(0, 0);
+    }
+    to {
+        transform: scale(1.1) translate(15px, -15px);
+    }
 }
 
 .sparkle {
@@ -217,6 +283,9 @@ body {
 <audio id="bgMusic" loop>
     <source src="https://actions.google.com/sounds/v1/weather/rain_heavy.ogg" type="audio/ogg">
 </audio>
+<div class="nebula nebula-purple"></div>
+<div class="nebula nebula-blue"></div>
+<div class="nebula nebula-pink"></div>
 
 <div class="moon"></div>
 <div class="cloud1"></div>
@@ -241,6 +310,12 @@ body {
 <div class="sparkle" style="top:30%;left:45%;"></div>
 <div class="sparkle" style="top:70%;left:75%;"></div>
 <div class="sparkle" style="top:85%;left:45%;"></div>
+<div class="sparkle" style="top:15%; left:25%; animation-delay: 0.5s;"></div>
+<div class="sparkle" style="top:25%; left:85%; animation-delay: 1.2s;"></div>
+<div class="sparkle" style="top:45%; left:12%; animation-delay: 2.1s;"></div>
+<div class="sparkle" style="top:65%; left:88%; animation-delay: 0.8s;"></div>
+<div class="sparkle" style="top:80%; left:35%; animation-delay: 1.7s;"></div>
+<div class="sparkle" style="top:35%; left:65%; animation-delay: 2.5s;"></div>
 
 
 <!-- MEMORY STARS -->
