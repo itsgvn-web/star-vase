@@ -116,6 +116,10 @@ body {
     z-index: 100;
 }
 
+#popup.active {
+    display: flex;
+}
+
 #note {
     background: #ffd6ec;
     color: #3a3552;
@@ -218,19 +222,19 @@ body {
 
 
 <!-- MEMORY STARS -->
-<div class="memoryStar" style="top:23%;left:15%;" data-memory="Walking home from school or after badminton, joking and laughing the whole way—even though that faded a bit later , those are easily some of my most beautiful memories."></div>
+<div class="memoryStar" style="top:23%;left:15%;" data-memory="Walking home from school or after badminton, joking and laughing the whole way—even though that faded a bit later, those are easily some of my most beautiful memories."></div>
 <div class="memoryStar" style="top:32%;left:28%;" data-memory="Navratri, Diwali, Holi, Uttarayan, birthdays—every single time we celebrated together, it was just pure laughter. Even though we only shared most of those moments once or twice, looking back, they always feel as fresh and special as ever."></div>
 <div class="memoryStar" style="top:18%;left:38%;" data-memory="All those countless moments in class we never thought would become so unforgettable—sharing tiffins or a stolen bottle. These memories may not be grand, but they are the ones I look back on and think, 'My childhood was fun, especially the part where a friend gave a Hindi oral examination.'"></div>
 <div class="memoryStar" style="top:26%;left:52%;" data-memory="All those lassi and chaas breaks, your nagging when I had a cold, and all those days you clearly bullied me. I'll be taking revenge for that—it will never be forgotten!"></div>
 <div class="memoryStar" style="top:20%;left:68%;" data-memory="With you, every moment was awkward and filled with second thoughts, but every single moment was happy. Every moment was and is a precious memory."></div>
-<div class="memoryStar" style="top:35%;left:82%;" data-memory="You aren't completely non-admirable. Some of your best qualities are known to people as mine , hehehe, I stole them."></div>
-<div class="memoryStar" style="top:48%;left:12%;" data-memory="That one specific walk from school on a rainy day has to be one of the reasons I tolerate you"></div>
+<div class="memoryStar" style="top:35%;left:82%;" data-memory="You aren't completely non-admirable. Some of your best qualities are known to people as mine, hehehe, I stole them."></div>
+<div class="memoryStar" style="top:48%;left:12%;" data-memory="That one specific walk from school on a rainy day has to be one of the reasons I tolerate you."></div>
 <div class="memoryStar" style="top:58%;left:25%;" data-memory="Topics never seem to end with you. No matter what, every call goes on for hours—that definitely belongs on my 'what I like' list."></div>
 <div class="memoryStar" style="top:45%;left:38%;" data-memory="What makes you, you, is your curiosity about everything. How you find things you love, give them time, and have a personality that isn't restricted or confined in a small box—you constantly learn and grow."></div>
 <div class="memoryStar" style="top:52%;left:62%;" data-memory="You are so much more than what the world sees, and I am glad I could witness versions of you I never thought existed."></div>
 <div class="memoryStar" style="top:62%;left:75%;" data-memory="You are my absolute favorite part of 'everything happens for a reason.'"></div>
 <div class="memoryStar" style="top:75%;left:18%;" data-memory="I hope at no point in your life you ever think that not smiling, not living, or not enjoying things is cool."></div>
-<div class="memoryStar" style="top:80%;left:35%;" data-memory="Do you know how rare are people  who make others feel truly seen? You've been that one for so many; so many have had a better day just because of you."></div>
+<div class="memoryStar" style="top:80%;left:35%;" data-memory="Do you know how rare are people who make others feel truly seen? You've been that one for so many; so many have had a better day just because of you."></div>
 <div class="memoryStar" style="top:70%;left:50%;" data-memory="And I pray you are never blind enough to miss how lovable you are—even when you're annoying!"></div>
 <div class="memoryStar" style="top:78%;left:68%;" data-memory="I truly hope we make more memories... many, many more."></div>
 <div class="memoryStar" style="top:40%;left:22%;" data-memory="You are the reason I stopped wanting male friendships."></div>
@@ -238,7 +242,8 @@ body {
 
 <div id="luckyStar" title="Click your lucky star!">⭐</div>
 
-<div id="popup
+<!-- FIXED POPUP HTML -->
+<div id="popup"> 
   <div id="note" class="color-1"> 
     <button id="closeBtn">×</button>
     <p id="memoryText"></p>
@@ -270,7 +275,8 @@ stars.forEach((star, index) => {
     note.style.transform = `rotate(${randomRot}deg)`;
     note.className = `color-${(index % 5) + 1}`;
 
-    popup.style.display = "flex";
+    // FIXED: Use classList for consistency
+    popup.classList.add("active");
 
     if(opened === 17){
       luckyStar.style.display = "block";
@@ -279,14 +285,14 @@ stars.forEach((star, index) => {
 });
 
 closeBtn.addEventListener("click", () => {
-  popup.style.display = "none";
+  popup.classList.remove("active");
 });
 
 luckyStar.addEventListener("click", () => {
-  memoryText.innerHTML = "✨ **The 18th Star Unlocked!**<br><br>You found all 17 memories... and here is one  for luck! i hope you are not sad on days you dont have to be,i hope on days you feel like you have no one you have someone to go to ,i hope you become someone you will be proud of, thank you for being a constant till now and i hope it stays like this till long ,Happy Birthday Parv . 🤍";
+  memoryText.innerHTML = "✨ **The 18th Star Unlocked!**<br><br>I hope you are not sad on days you don't have to be, I hope on days you feel like you have no one you have someone to go to, I hope you become someone you will be proud of. Thank you for being a constant till now and I hope it stays like this for long. Happy Birthday Parv. 🤍";
   note.style.transform = "rotate(1deg)";
   note.className = "color-2";
-  popup.style.display = "flex";
+  popup.classList.add("active");
 });
 
 let isPlaying = false;
