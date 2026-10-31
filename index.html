@@ -5,7 +5,6 @@
 
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&display=swap');
 body {
     margin: 0;
     height: 100vh;
@@ -65,6 +64,14 @@ body {
     animation: moonFloat 6s ease-in-out infinite alternate;
     z-index: 2;
     pointer-events: none;
+}
+    @keyframes moonFloat {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-12px);
+    }
 }
 .cloud1 {
     position: absolute;
@@ -176,7 +183,7 @@ body {
 .memoryStar:hover {
     transform: scale(1.4);
 }
-#luckystar {
+#luckyStar {
     position: absolute;
     border-radius: 50%;
     border: 3px solid rgba(254, 240, 138, 1);
@@ -321,37 +328,12 @@ body {
     }
 }
 
-.music-btn {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #f7f2eb;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: Georgia, serif;
-    font-size: 14px;
-    z-index: 30;
-    transition: background 0.3s;
-}
-
-.music-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-@keyframes twinkle {
-    from { opacity: .2; }
-    to { opacity: 1; }
-}
 </style>
 </head>
 
 <body>
 
-<button class="music-btn" id="musicBtn">🎵 Play Music</button>
-<audio id="bgMusic" src="hbd.mp3" loop></audio>
+
 <div class="nebula nebula-purple"></div>
 <div class="nebula nebula-blue"></div>
 <div class="nebula nebula-pink"></div>
@@ -430,56 +412,59 @@ const note = document.getElementById("note");
 const memoryText = document.getElementById("memoryText");
 const closeBtn = document.getElementById("closeBtn");
 const luckyStar = document.getElementById("luckyStar");
-const musicBtn = document.getElementById("musicBtn");
-const bgMusic = document.getElementById("bgMusic");
 
 let opened = 0;
 
 stars.forEach((star, index) => {
-  star.addEventListener("click", () => {
-    if(!star.classList.contains("visited")){
-      star.classList.add("visited");
-      opened++;
-    }
+    star.addEventListener("click", () => {
 
-    memoryText.textContent = star.dataset.memory;
+        if (!star.classList.contains("visited")) {
+            star.classList.add("visited");
+            opened++;
+        }
 
-    const randomRot = (Math.random() * 6) - 3;
-    note.style.transform = `rotate(${randomRot}deg)`;
-    note.className = `color-${(index % 5) + 1}`;
+        memoryText.textContent = star.dataset.memory;
 
-    // FIXED: Use classList for consistency
-    popup.classList.add("active");
+        const randomRot = (Math.random() * 6) - 3;
+        note.style.transform = `rotate(${randomRot}deg)`;
 
-    if(opened === 17){
-      luckyStar.style.display = "block";
-    }
-  });
+        note.className = "";
+        note.classList.add(`color-${(index % 5) + 1}`);
+
+        popup.classList.add("active");
+
+        if (opened === 17) {
+            luckyStar.style.display = "block";
+        }
+    });
 });
 
 closeBtn.addEventListener("click", () => {
-  popup.classList.remove("active");
+    popup.classList.remove("active");
+});
+
+popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+        popup.classList.remove("active");
+    }
 });
 
 luckyStar.addEventListener("click", () => {
-  memoryText.innerHTML = "✨ **The 18th Star Unlocked!**<br><br>I hope you are not sad on days you don't have to be, I hope on days you feel like you have no one you have someone to go to, I hope you become someone you will be proud of. Thank you for being a constant till now and I hope it stays like this for long. Happy Birthday Parv. 🤍";
-  note.style.transform = "rotate(1deg)";
-  note.className = "color-2";
-  popup.classList.add("active");
-});
 
+    memoryText.innerHTML =
+        "<strong>✨ The 18th Star Unlocked!</strong><br><br>" +
+        "I hope you are not sad on days you don't have to be. " +
+        "I hope on days you feel like you have no one, you always have someone to go to. " +
+        "I hope you become someone you will be proud of. " +
+        "Thank you for being a constant till now and I hope it stays like this for long. " +
+        "Happy Birthday Parv. 🤍";
 
-const musicBtn = document.getElementById('musicBtn');
-const bgMusic = document.getElementById('bgMusic');
+    note.style.transform = "rotate(1deg)";
 
-musicBtn.addEventListener('click', () => {
-    if (bgMusic.paused) {
-        bgMusic.play();
-        musicBtn.textContent = '🔊 Pause Music';
-    } else {
-        bgMusic.pause();
-        musicBtn.textContent = '🎵 Play Music';
-    }
+    note.className = "";
+    note.classList.add("color-2");
+
+    popup.classList.add("active");
 });
 </script>
 
