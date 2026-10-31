@@ -51,17 +51,18 @@ body {
 
 .moon {
     position: absolute;
-    top: 40px;
-    right: 80px;
-    width: 100px;
-    height: 100px;
+    top: 30px;
+    right: 50px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(243, 232, 255, 0.85) 0%, rgba(196, 181, 253, 0.5) 60%, rgba(129, 140, 248, 0.2) 100%);
-    box-shadow: 18px 10px 0 0 rgba(3, 7, 18, 0.9);
-    opacity: 0.9;
-    filter: drop-shadow(0 0 18px rgba(196, 181, 253, 0.6)) drop-shadow(0 0 35px rgba(129, 140, 248, 0.3));
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.45) 0%, rgba(216, 180, 254, 0.2) 50%, rgba(168, 85, 247, 0.05) 100%);
+    box-shadow: -25px 15px 0 0 rgba(11, 7, 18, 0.95); /* Carves out the soft crescent */
+    opacity: 0.7;
+    filter: drop-shadow(0 0 30px rgba(216, 180, 254, 0.25));
     animation: moonFloat 6s ease-in-out infinite alternate;
     z-index: 2;
+    pointer-events: none;
 }
 
 @keyframes moonFloat {
@@ -195,7 +196,9 @@ body {
 }
 
 /* Translucent Pastel Sticky Notes */
+/* Translucent Pastel Sticky Notes */
 .popup {
+    display: none; /* Keeps it hidden by default */
     background: rgba(255, 245, 248, 0.25); /* Translucent soft blush */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -218,6 +221,10 @@ body {
     z-index: 100;
 }
 
+/* Show popup when active */
+.popup.active {
+    display: block; 
+}
 /* Optional: Rotate sticky colors dynamically using nth-child */
 .popup:nth-child(2n) {
     background: rgba(243, 232, 255, 0.25); /* Translucent pastel lavender */
@@ -232,10 +239,6 @@ body {
 .popup:nth-child(5n) {
     background: rgba(254, 240, 138, 0.2); /* Translucent pastel yellow */
     box-shadow: 0 8px 32px 0 rgba(250, 204, 21, 0.2);
-}
-
-#popup.active {
-    display: flex;
 }
 
 #note {
