@@ -51,17 +51,18 @@ body {
 
 .moon {
     position: absolute;
-    top: 35px;
-    right: 55px;
-    width: 170px;
-    height: 170px;
+    top: 30px;
+    right: 50px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.6) 0%, rgba(216, 180, 254, 0.3) 60%, rgba(168, 85, 247, 0.1) 100%);
-    box-shadow: -35px -15px 0 0 rgba(11, 7, 18, 0.95);
-    opacity: 0.85;
-    filter: drop-shadow(0 0 25px rgba(216, 180, 254, 0.3));
-    pointer-events: none;
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.45) 0%, rgba(216, 180, 254, 0.2) 50%, rgba(168, 85, 247, 0.05) 100%);
+    box-shadow: -25px 15px 0 0 rgba(11, 7, 18, 0.95);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 30px rgba(216, 180, 254, 0.25));
+    animation: moonFloat 6s ease-in-out infinite alternate;
     z-index: 2;
+    pointer-events: none;
 }
 .cloud1 {
     position: absolute;
@@ -173,7 +174,31 @@ body {
 .memoryStar:hover {
     transform: scale(1.4);
 }
+#luckystar {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(254, 240, 138, 0.9);
+    box-shadow: 
+        0 0 15px rgba(254, 240, 138, 0.9),
+        0 0 30px rgba(253, 224, 71, 0.6);
+    animation: goldShimmer 2s ease-in-out infinite alternate;
+}
 
+@keyframes goldShimmer {
+    0% {
+        box-shadow: 
+            0 0 10px rgba(254, 240, 138, 0.6),
+            0 0 20px rgba(253, 224, 71, 0.4);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 
+            0 0 25px rgba(254, 240, 138, 1),
+            0 0 45px rgba(253, 224, 71, 0.8),
+            0 0 65px rgba(234, 179, 8, 0.6);
+        transform: scale(1.15);
+    }
+}
 .visited {
     opacity: .35;
     filter: grayscale(40%);
