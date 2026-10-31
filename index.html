@@ -352,7 +352,7 @@ body {
 
 <button class="music-btn" id="musicBtn">🎵 Play Music</button>
 <audio id="bgMusic" loop>
-    <source src="https://actions.google.com/sounds/v1/weather/rain_heavy.ogg" type="audio/ogg">
+    <source src="hbd.mp3" type="audio/mpeg">
 </audio>
 <div class="nebula nebula-purple"></div>
 <div class="nebula nebula-blue"></div>
@@ -470,17 +470,18 @@ luckyStar.addEventListener("click", () => {
   popup.classList.add("active");
 });
 
-let isPlaying = false;
-musicBtn.addEventListener("click", () => {
-  if (!isPlaying) {
-    bgMusic.play();
-    musicBtn.textContent = "🔇 Pause Music";
-    isPlaying = true;
-  } else {
-    bgMusic.pause();
-    musicBtn.textContent = "🎵 Play Music";
-    isPlaying = false;
-  }
+
+const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+
+musicBtn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.textContent = '🔊 Pause Music';
+    } else {
+        bgMusic.pause();
+        musicBtn.textContent = '🎵 Play Music';
+    }
 });
 </script>
 
