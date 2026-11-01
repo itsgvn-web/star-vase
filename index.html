@@ -517,6 +517,7 @@ const closeBtn = document.getElementById("closeBtn");
 const luckyStar = document.getElementById("luckyStar");
 
 let opened = 0;
+let finalStarOpened = false;
 
 stars.forEach((star, index) => {
 
@@ -550,6 +551,18 @@ stars.forEach((star, index) => {
 });
 closeBtn.addEventListener("click", () => {
     popup.classList.remove("active");
+
+    if (finalStarOpened) {
+        stars.forEach((star) => {
+            star.style.transition = "opacity 3s ease";
+            star.style.opacity = "0";
+            star.style.pointerEvents = "none";
+        });
+
+        luckyStar.style.transition = "opacity 3s ease";
+        luckyStar.style.opacity = "0";
+        luckyStar.style.pointerEvents = "none";
+    }
 });
 
 popup.addEventListener("click", (e) => {
@@ -560,7 +573,10 @@ popup.addEventListener("click", (e) => {
 
 luckyStar.addEventListener("click", () => {
 
+    finalStarOpened = true;
+
     memoryText.innerHTML =
+    // your message...
      "<strong>✨ The 18th Star Unlocked!</strong><br><br>" +
 "I don't really have a grand lesson or a perfect quote to leave here. I just want you to know how grateful I am that you exist in my life. " +
 "Some of my happiest memories have your name written all over them, and looking back, I wouldn't trade a single one. " +
@@ -572,6 +588,7 @@ luckyStar.addEventListener("click", () => {
 
     note.className = "";
     note.classList.add("color-2");
+    
 
     popup.classList.add("active");
 });
