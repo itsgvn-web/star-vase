@@ -552,18 +552,23 @@ stars.forEach((star, index) => {
 closeBtn.addEventListener("click", () => {
     popup.classList.remove("active");
 
-    if (finalStarOpened) {
-        stars.forEach((star) => {
-            star.style.transition = "opacity 3s ease";
-            star.style.opacity = "0";
-            star.style.pointerEvents = "none";
-        });
+   if (finalStarOpened) {
 
-        luckyStar.style.transition = "opacity 3s ease";
-        luckyStar.style.opacity = "0";
-        luckyStar.style.pointerEvents = "none";
-    }
-});
+    const subtitle = document.querySelector(".subtitle");
+
+    subtitle.style.transition = "opacity 3s ease";
+    subtitle.style.opacity = "0";
+
+    stars.forEach((star) => {
+        star.style.transition = "opacity 3s ease";
+        star.style.opacity = "0";
+        star.style.pointerEvents = "none";
+    });
+
+    luckyStar.style.transition = "opacity 3s ease";
+    luckyStar.style.opacity = "0";
+    luckyStar.style.pointerEvents = "none";
+}
 
 popup.addEventListener("click", (e) => {
     if (e.target === popup) {
